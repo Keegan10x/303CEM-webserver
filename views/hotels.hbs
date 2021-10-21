@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Hotels</title>
+		<link href="" type="text/css" rel="stylesheet" />
+		<script type="module" src="/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>Hotels</h1>
+			<nav>
+			{{#if authorised}}
+				<a href="/logout">Log out</a>
+			
+				<a href="/myHolidays">My Holidays</a>
+			{{else}}
+				<a href="/login">Log in</a>
+			{{/if}}
+			</nav>
+			<nav>
+				<a href="/flights">See Flights</a>
+				<a href="/holidayDeals">See Holidays Deals</a>
+				<a href="/tours">See Tours</a>
+				<a href="/insurance">See Insurance Deals</a>
+			</nav>
+		</header>
+	<main>
+	{{#each items}}
+		<figure>		
+			<figcaption>{{this.hotelName}}</figcaption>
+			<figcaption>POST CODE: {{this.postcode}}</figcaption>
+			<figcaption>Country: {{this.country}}</figcaption>
+			<img src = "{{this.hotelImg}}" width="150">
+			<figcaption>Tier: {{this.tier}}</figcaption>	
+			<figcaption>Price/Day £{{this.roomPrice}}</figcaption>	
+		</figure>
+		<hr />
+	{{/each}}	
+	</main>
+	</body>
+</html>

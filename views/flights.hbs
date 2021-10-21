@@ -1,0 +1,50 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Flights</title>
+		<link href="" type="text/css" rel="stylesheet" />
+		<script type="module" src="/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>Flights</h1>
+			<nav>
+			{{#if authorised}}
+				<a href="/logout">Log out</a>
+			
+				<a href="/myHolidays">My Holidays</a>
+			{{else}}
+				<a href="/login">Log in</a>
+			{{/if}}
+			</nav>
+			<nav>
+				<a href="/hotels">See Hotels</a>
+				<a href="/holidayDeals">See Holidays Deals</a>
+				<a href="/tours">See Tours</a>
+				<a href="/insurance">See Insurance Deals</a>
+			</nav>
+		</header>
+	<main>
+		<table>
+		  <tr>
+		    <th>Carrier</th>
+		    <th>Class</th>
+		    <th>Flight Number</th>
+		    <th>Destination</th>
+	            <th>Price</th>
+		  </tr>
+		{{#each items}}
+		  <tr>
+		    <td>{{this.carrier}}</td>
+		    <td>{{this.class}}</td>
+		    <td>{{this.flightNumber}}</td>
+		    <td>{{this.destination}}</td>
+	            <td>£{{this.ticketPrice}}</td>
+		  </tr>
+		{{/each}}
+		</table>
+	</main>
+	</body>
+</html>

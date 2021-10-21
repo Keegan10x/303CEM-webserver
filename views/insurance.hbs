@@ -1,0 +1,48 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Insurance</title>
+		<link href="" type="text/css" rel="stylesheet" />
+		<script type="module" src="/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>Insurance</h1>
+			<nav>
+			{{#if authorised}}
+				<a href="/logout">Log out</a>
+			
+				<a href="/myHolidays">My Holidays</a>
+			{{else}}
+				<a href="/login">Log in</a>
+			{{/if}}
+			</nav>
+			<nav>
+				<a href="/hotels">See Hotels</a>
+				<a href="/holidayDeals">See Holidays Deals</a>
+				<a href="/tours">See Tours</a>
+				<a href="/insurance">See Flights</a>
+			</nav>
+		</header>
+	<main>
+		<table>
+		  <tr>
+		    <th>Insurance Name</th>
+		    <th>Company</th>
+		    <th>Price/Day</th>
+		    <th>Description</th>
+		  </tr>
+		{{#each items}}
+		  <tr>
+		    <td>{{this.insuranceName}}</td>
+		    <td>{{this.company}}</td>
+		    <td>£{{this.insurancePrice}}</td>
+		    <td>{{this.description}}</td>
+		  </tr>
+		{{/each}}
+		</table>
+	</main>
+	</body>
+</html>

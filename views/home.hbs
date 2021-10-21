@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Home Page</title>
+		<link href="" type="text/css" rel="stylesheet" />
+		<script type="module" src="/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>Home</h1>
+			<nav>
+			{{#if authorised}}
+				<a href="/logout">Log out</a>
+			
+				<a href="/myHolidays">My Holidays</a>
+			{{else}}
+				<a href="/login">Log in</a>
+			{{/if}}
+			</nav>
+			<nav>
+				<a href="/holidayDeals">See Holiday Deals</a>
+				<a href="/flights">See Flights</a>
+				<a href="/hotels">See Hotels</a>
+				<a href="/tours">See Tours</a>
+				<a href="/insurance">See Insurance Deals</a>
+			</nav>
+		</header>
+	<main>
+		<p>This is the home page. Users can see it without logging in.</p>
+		{{#if authorised}}
+			<p>You are authorized</p>
+		{{/if}}
+	</main>
+	</body>
+</html>

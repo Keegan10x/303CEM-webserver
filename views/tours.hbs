@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Tours</title>
+		<link href="" type="text/css" rel="stylesheet" />
+		<script type="module" src="/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>Tours</h1>
+			<nav>
+			{{#if authorised}}
+				<a href="/logout">Log out</a>
+			
+				<a href="/myHolidays">My Holidays</a>
+			{{else}}
+				<a href="/login">Log in</a>
+			{{/if}}
+			</nav>
+			<nav>
+				<a href="/flights">See Flights</a>
+				<a href="/hotels">See Hotels</a>
+				<a href="/holidayDeals">See Holiday Deals</a>
+				<a href="/insurance">See Insurance Deals</a>
+			</nav>
+		</header>
+	<main>
+	{{#each items}}
+		<figure>		
+			<figcaption>Name: {{this.tourName}}</figcaption>
+			<figcaption>Country: {{this.country}}</figcaption>
+			<figcaption>Price/Day: £{{this.tourPrice}}</figcaption>
+			<img src = "{{this.tourImg}}" width="150">
+		</figure>
+		<hr />
+	{{/each}}
+	</main>
+	</body>
+</html>
