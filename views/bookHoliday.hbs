@@ -13,14 +13,71 @@
 			<nav>
 				<a href="/logout">Log out</a>
 				<a href="/myHolidays">My Holidays</a>
+				<nav>
 				<a href="/hotels">See Hotels</a>
 				<a href="/holidayDeals">See Holidays Deals</a>
 				<a href="/tours">See Tours</a>
 				<a href="/insurance">See Insurance Deals</a>
+				</nav>
 			</nav>
 		</header>
 	<main>
+	<form name=BookHoliday action="/bookHoliday" method="post" enctype="multipart/form-data">
 		
+	<fieldset>
+	<legend>Book Flight</legend>
+	<label>Flights<input type="text" name="flight" list="flights" /></label>
+	<datalist id="flights">
+	{{#each flights}}
+	<option value="{{this.id}} | {{this.carrier}} | {{this.class}} | {{this.flightNumber}} | {{this.destination}} | {{this.ticketPrice}}" required>
+	{{/each}}
+	</datalist>
+	</fieldset>
+	
+	<fieldset>
+	<legend>Book Hotel</legend>
+	<label>Hotels<input type="text" name="hotel" list="hotels" /></label>
+	<datalist id="hotels">
+	{{#each hotels}}
+	<option value="{{this.id}} | {{this.hotelName}} | {{this.postcode}} | {{this.country}} | {{this.tier}} | {{this.roomPrice}}" required>
+	{{/each}}
+	</datalist>
+	</fieldset>
+	
+		
+	<fieldset>
+	<legend>Book Tour</legend>
+	<label>Tours<input type="text" name="tour" list="tours" /></label>
+	<datalist id="tours">
+	{{#each tours}}
+	<option value="{{this.id}} | {{this.tourName}} | {{this.country}} | {{this.tourPrice}}" required>
+	{{/each}}
+	</datalist>
+	</fieldset>
+		
+			
+	<fieldset>
+	<legend>Book Insurance</legend>
+	<label>Insurance<input type="text" name="insurance" list="insurances" /></label>
+	<datalist id="insurances">
+	{{#each insurance}}
+	<option value="{{this.id}} | {{this.insuranceName}} | {{this.company}} | {{this.insurancePrice}}" required>
+	{{/each}}
+	</datalist>
+	</fieldset>
+		
+	<fieldset>
+	<legend>Travel Dates</legend>
+	<label for="start">Start date:</label>
+	<input type="date" id="start" name="start">
+	<label for="end">End date:</label>
+	<input type="date" id="end" name="end">
+	</fieldset>
+		
+	
+	<input type="submit" value="Confirm" >	
+	</form>
 	</main>
+			
 	</body>
 </html>

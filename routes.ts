@@ -3,7 +3,7 @@ import { Handlebars } from 'https://deno.land/x/handlebars@v0.6.0/mod.ts';
 import { DEFAULT_HANDLEBARS_CONFIG } from './util.ts'
 
 import { login, loginConfig, register, registerConfig } from './auth.ts'
-import { collector } from './features.js'
+import { collector, saveData } from './features.js'
 
 
 const handle = new Handlebars(DEFAULT_HANDLEBARS_CONFIG);
@@ -17,7 +17,43 @@ router.get('/', async context => {
 	context.response.body = body
 })
 
-//The actual part we care about
+//Auth required routes
+router.get('/bookHoliday', async context => {
+	const authorised = context.cookies.get('authorised')
+	if (authorised === undefined) context.response.redirect('/login')
+	
+	
+	const flightsData = await collector('flights')
+	const hotelsData = await collector('hotels')
+	const toursData = await collector('tours')
+	const insuranceData = await collector('insurance')
+	
+	
+	let data :any = {}
+	data['flights'] = flightsData.items
+	data['hotels'] = hotelsData.items
+	data['tours'] = toursData.items
+	data['insurance'] = insuranceData.items
+	data.authorised = authorised
+	console.log(data)
+	const body = await handle.renderView('bookHoliday', data)
+	context.response.body = body
+})
+
+//Posting customer data
+router.post('/bookHoliday', async context => {
+	console.log('POST /new')
+	const body :any = await context.request.body({ type: 'form-data'})
+	const data :any = await body.value.read()
+	data.username = context.cookies.get('authorised')
+	//console.log(data)
+	await saveData(data)
+	context.response.redirect('/')
+})
+
+
+
+
 
 
 //non auth required views
@@ -28,6 +64,7 @@ router.get('/flights', async context => {
 	const body = await handle.renderView('flights', flightData)
 	context.response.body = body
 })
+
 
 router.get('/hotels', async context => {
 	const authorised = context.cookies.get('authorised')
