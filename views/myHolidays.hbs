@@ -1,0 +1,134 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>My Holidays</title>
+		<link rel="stylesheet" href="https://cliff-apollo.codio-box.uk/views/style.css">
+		<script type="module" src="/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>My Holidays</h1>
+				<nav>
+				<a href="/logout">Log out</a>
+				<a href="/bookHoliday">Book Holiday</a>
+				<nav>
+				<a href="/">Home</a>
+				<a href="/hotels">See Hotels</a>
+				<a href="/flights">See Flights</a>
+				<a href="/tours">See Tours</a>
+				<a href="/insurance">See Insurance Deals</a>
+				</nav>
+			</nav>
+		</header>
+	<main>
+		
+	
+	<!-- Flight -->
+	<table>
+		<thead>
+		<tr>
+			<th>Carrier</th><th>Class</th><th>Flight Number</th><th>Destination</th><th>Ticket Price</th>
+		</tr>
+		</thead>
+	<tbody>
+	{{#each flights}}
+		<tr>
+			<td>{{this.carrier}}</td> <td>{{this.class}}</td> <td>{{this.flightNumber}}</td> <td>{{this.destination}}</td> <td>£{{this.ticketPrice}}</td>
+		</tr>
+	{{/each}}
+	</tbody>
+	</table>
+		
+
+	<!-- Hotel -->
+	<table>
+		<thead>
+		<tr>
+			<th>Hotel Name</th><th>Post Code</th><th>Country</th><th>Price/Day</th>
+		</tr>
+		</thead>
+	<tbody>
+	{{#each hotels}}
+		<tr>
+			<td>{{this.hotelName}}</td> <td>{{this.postcode}}</td> <td>{{this.country}}</td> <td>£{{this.roomPrice}}</td>
+		</tr>
+	{{/each}}
+	</tbody>
+	</table>
+	
+		
+		
+		
+	
+	<!-- Tours -->
+	<table>
+		<thead>
+		<tr>
+			<th>Tour Name</th><th>Country</th><th>Price/Day</th>
+		</tr>
+		</thead>
+	<tbody>
+	{{#each tours}}
+		<tr>
+			<td>{{this.tourName}}</td> <td>{{this.country}}</td> <td>£{{this.tourPrice}}</td>
+		</tr>
+	{{/each}}
+	</tbody>
+	</table>
+		
+		
+		
+		
+	<!-- Insurance -->
+	<table>
+		<thead>
+		<tr>
+			<th>Insurance Name</th><th>Insurance Company</th><th>Price/Day</th>
+		</tr>
+		</thead>
+	<tbody>
+	{{#each insurance}}
+		<tr>
+			<td>{{this.insuranceName}}</td> <td>{{this.company}}</td> <td>£{{this.insurancePrice}}</td>
+		</tr>
+	{{/each}}
+	</tbody>
+	</table>
+		
+	
+	<!-- Start End -->
+	<table>
+		<thead>
+		<tr>
+			<th>Start Dates</th><th>End Dates</th>
+		</tr>
+		</thead>
+	<tbody>
+		<tr>
+			<td>{{#each starts}}{{this.sdate}}</td>{{/each}} <td>{{#each ends}}{{this.edate}}{{/each}}</td>
+		</tr>
+	</tbody>
+	</table>
+		
+	<!-- Start End -->
+	<table>
+		<thead>
+		<tr>
+			<th>Total</th><th>Transaction Status</th><th>Invoice Reference</th>
+		</tr>
+		</thead>
+	<tbody>
+		<tr>
+			<td>{{#each totals}}£{{this.total}}{{/each}}</td><td>{{#each isPaids}}{{this.isPaid}}{{/each}}</td><td>{{#each invoiceRefs}}{{this.invoiceRef}}{{/each}}</td>
+		</tr>
+	</tbody>
+	</table>
+	
+	
+		<p>Don't forget to quote your invoice reference in your bank transfer</p>	
+	</main>
+			
+	</body>
+</html>

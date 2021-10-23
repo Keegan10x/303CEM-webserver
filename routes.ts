@@ -3,7 +3,7 @@ import { Handlebars } from 'https://deno.land/x/handlebars@v0.6.0/mod.ts';
 import { DEFAULT_HANDLEBARS_CONFIG } from './util.ts'
 
 import { login, loginConfig, register, registerConfig } from './auth.ts'
-import { collector, saveData } from './features.js'
+import { collector, saveData, getMyRecords } from './features.js'
 
 
 const handle = new Handlebars(DEFAULT_HANDLEBARS_CONFIG);
@@ -52,6 +52,20 @@ router.post('/bookHoliday', async context => {
 })
 
 
+//See My booked holidays
+
+router.get('/myHolidays', async context => {
+	const authorised = context.cookies.get('authorised')
+	if (authorised === undefined) context.response.redirect('/login')
+	
+	let records :any = await getMyRecords(authorised)
+	records.authorised = authorised
+	
+	console.log(records)
+	const body = await handle.renderView('myHolidays', records)
+	context.response.body = body
+})
+
 
 
 
@@ -87,13 +101,6 @@ router.get('/tours', async context => {
 	let tourData :any = await collector('tours')
 	tourData.authorised = authorised
 	const body = await handle.renderView('tours', tourData)
-	context.response.body = body
-})
-
-router.get('/holidayDeals', async context => {
-	const authorised = context.cookies.get('authorised')
-	const data = { authorised }
-	const body = await handle.renderView('holidayDeals', data)
 	context.response.body = body
 })
 
