@@ -1,5 +1,6 @@
 html{
 	background-color:lightgray;
+	font-family: Calibri;
 }
 
 
@@ -43,6 +44,8 @@ a {
 	margin-bottom:8px;
 }
 
-h1 {
-	font-family: Calibri;
+hr {
+	border: 1px solid black;
+
 }
+

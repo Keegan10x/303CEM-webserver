@@ -99,7 +99,7 @@ export async function getMyRecords(auth){
 	
 	sql = `SELECT * FROM holidays WHERE usr=${userid}`
 	const records = await db.query(sql)
-	console.log(records)
+	//console.log(records)
 	
 	if(records.length < 2){
 		let record = {}
@@ -143,10 +143,46 @@ export async function getMyRecords(auth){
 		return record
 		
 	}else if(records.length > 1){
-		for(const record of records){
-			//do stuff here
-			console.log(`Bye`)
+		let record = {}
+
+		record.tours = []
+		record.hotels = []
+		record.insurance = []
+		record.flights = []
+		record.starts = []
+		record.ends = []
+		record.totals = []
+		record.isPaids = []
+		record.invoiceRefs = []
+				
+		for(const i in records){
+			const tData = await getSpecific('tours', records[i].trs)
+			record.tours.push(tData.items[0])
+
+			
+			const hData = await getSpecific('hotels', records[i].htl)
+			record.hotels.push(hData.items[0])
+
+			
+			const iData = await getSpecific('insurance', records[i].ins)
+			record.insurance.push(iData.items[0])
+
+			
+			const fData = await getSpecific('flights', records[i].flt)
+			record.flights.push(fData.items[0])
+			
+			
+			record.starts.push({'sdate':records[i].start})
+			record.ends.push({'edate':records[i].end})
+			record.totals.push({'total':records[i].total})
+			record.isPaids.push({'isPaid':records[i].isPaid})
+			record.invoiceRefs.push({'invoiceRef':records[i].invoiceRef})
+			
+			
+			
+
 		}
+		return record
 	}
 }
 

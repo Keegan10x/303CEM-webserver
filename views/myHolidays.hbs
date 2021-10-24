@@ -26,6 +26,7 @@
 		
 	
 	<!-- Flight -->
+	<h2>Flights</h2>
 	<table>
 		<thead>
 		<tr>
@@ -43,6 +44,7 @@
 		
 
 	<!-- Hotel -->
+	<h2>Hotels</h2>
 	<table>
 		<thead>
 		<tr>
@@ -63,6 +65,7 @@
 		
 	
 	<!-- Tours -->
+	<h2>Tours</h2>
 	<table>
 		<thead>
 		<tr>
@@ -82,6 +85,7 @@
 		
 		
 	<!-- Insurance -->
+	<h2>Insurance</h2>
 	<table>
 		<thead>
 		<tr>
@@ -99,6 +103,7 @@
 		
 	
 	<!-- Start End -->
+	<h2>Start-End Dates</h2>
 	<table>
 		<thead>
 		<tr>
@@ -107,12 +112,15 @@
 		</thead>
 	<tbody>
 		<tr>
-			<td>{{#each starts}}{{this.sdate}}</td>{{/each}} <td>{{#each ends}}{{this.edate}}{{/each}}</td>
+			<td>{{#each starts}}{{this.sdate}}<hr>{{/each}}</td><td>{{#each ends}}{{this.edate}}<hr>{{/each}}</td>
 		</tr>
 	</tbody>
 	</table>
 		
-	<!-- Start End -->
+
+		
+	<!-- Invoices -->
+	<h2>Invoices</h2>	
 	<table>
 		<thead>
 		<tr>
@@ -121,14 +129,11 @@
 		</thead>
 	<tbody>
 		<tr>
-			<td>{{#each totals}}£{{this.total}}{{/each}}</td><td>{{#each isPaids}}{{this.isPaid}}{{/each}}</td><td>{{#each invoiceRefs}}{{this.invoiceRef}}{{/each}}</td>
+			<td>{{#each totals}}£{{this.total}}<hr>{{/each}}</td><td>{{#each isPaids}}{{this.isPaid}}<hr>{{/each}}</td><td>{{#each invoiceRefs}}{{this.invoiceRef}}<hr>{{/each}}</td>
 		</tr>
 	</tbody>
-	</table>
-	
-	
-		<p>Don't forget to quote your invoice reference in your bank transfer</p>	
+	</table>	
 	</main>
-			
+	<em>Don't forget to quote your invoice reference in your bank transfer</em>
 	</body>
 </html>

@@ -57,13 +57,21 @@ router.post('/bookHoliday', async context => {
 router.get('/myHolidays', async context => {
 	const authorised = context.cookies.get('authorised')
 	if (authorised === undefined) context.response.redirect('/login')
-	
-	let records :any = await getMyRecords(authorised)
+	let records :any = {}
+	try {
+	  records = await getMyRecords(authorised)
+	}
+	catch(err) {
+	  console.log('no data')
+	}
+	finally{	
+	//let records :any = await getMyRecords(authorised)
 	records.authorised = authorised
-	
 	console.log(records)
+	//console.log(records)
 	const body = await handle.renderView('myHolidays', records)
 	context.response.body = body
+	}
 })
 
 
