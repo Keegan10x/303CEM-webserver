@@ -79,8 +79,7 @@ export async function saveData(data){
 	const insuranceCost = iPriceResult[0].insurancePrice
 	
 	const totalCost = flightCost + hotelCost*days + tourCost*days + insuranceCost*days
-	
-	
+		
 	
 	sql = `INSERT INTO holidays(usr, trs, htl, ins, flt, start, end, total, isPaid, invoiceRef)\
  VALUES(${userid}, ${tourId}, ${hotelId}, ${insuranceId}, ${flightId}, '${start}', '${end}', ${totalCost}, '${paid}', '${invoiceNo}')`
@@ -114,8 +113,7 @@ export async function getMyRecords(auth){
 		
 		const fData = await getSpecific('flights', records[0].flt)
 		record.flights = [ fData.items[0] ]
-		
-	
+			
 		
 		record.starts = [
 			{'sdate':records[0].start}
@@ -138,8 +136,6 @@ export async function getMyRecords(auth){
 		]
 
 
-		
-		//console.log(record)
 		return record
 		
 	}else if(records.length > 1){
@@ -158,30 +154,23 @@ export async function getMyRecords(auth){
 		for(const i in records){
 			const tData = await getSpecific('tours', records[i].trs)
 			record.tours.push(tData.items[0])
-
 			
 			const hData = await getSpecific('hotels', records[i].htl)
 			record.hotels.push(hData.items[0])
-
 			
 			const iData = await getSpecific('insurance', records[i].ins)
 			record.insurance.push(iData.items[0])
 
-			
 			const fData = await getSpecific('flights', records[i].flt)
 			record.flights.push(fData.items[0])
-			
 			
 			record.starts.push({'sdate':records[i].start})
 			record.ends.push({'edate':records[i].end})
 			record.totals.push({'total':records[i].total})
 			record.isPaids.push({'isPaid':records[i].isPaid})
 			record.invoiceRefs.push({'invoiceRef':records[i].invoiceRef})
-			
-			
-			
-
 		}
+		
 		return record
 	}
 }
