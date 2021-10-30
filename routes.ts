@@ -31,7 +31,7 @@ router.get("/bookHoliday", async (context) => {
   data["tours"] = toursData.items;
   data["insurance"] = insuranceData.items;
   data.authorised = authorised;
-  console.log(data);
+  //console.log(data)
   const body = await handle.renderView("bookHoliday", data);
   context.response.body = body;
 });
@@ -60,7 +60,6 @@ router.get("/myHolidays", async (context) => {
   } finally {
     //let records :any = await getMyRecords(authorised)
     records.authorised = authorised;
-    console.log(records);
     //console.log(records)
     const body = await handle.renderView("myHolidays", records);
     context.response.body = body;
@@ -109,13 +108,13 @@ router.get("/login", async (context) => {
 });
 
 router.post("/login", async (context) => {
-  console.log("POST /login");
+  //console.log("POST /login");
   const body = context.request.body({ type: "form" });
   const value = await body.value;
   const username = String(value.get("user"));
   const password = String(value.get("pass"));
   const credentials: loginConfig = { username, password };
-  console.log(credentials);
+  //console.log(credentials);
   try {
     await login(credentials);
     context.cookies.set("authorised", credentials.username);
@@ -135,14 +134,14 @@ router.get("/register", async (context) => {
 router.post("/register", async (context) => {
   console.log("POST /register");
   const body = context.request.body({ type: "form" });
-  console.log(body);
+  //console.log(body);
   const value = await body.value;
-  console.log(value);
+  //console.log(value);
   const username: string = String(value.get("user"));
   const password: string = String(value.get("pass"));
   const password2: string = String(value.get("pass2"));
   const credentials: registerConfig = { username, password, password2 };
-  console.log(credentials);
+  //console.log(credentials);
   await register(credentials);
   context.response.redirect("/login");
 });
