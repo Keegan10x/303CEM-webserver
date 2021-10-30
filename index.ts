@@ -5,12 +5,19 @@ import { DEFAULT_HANDLEBARS_CONFIG } from "./util.ts";
 
 const app = new Application();
 const handle = new Handlebars(DEFAULT_HANDLEBARS_CONFIG);
-const port: number = 3000;
 
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.listen({ port });
-console.log(`Listening on port ${port}`);
+
+
+app.listen({
+	port: 8080,
+	//secure: true,
+	//certFile: './certificate.pem',
+	//keyFile: './key.pem'
+});
+
+console.log(`Listening on port 8080`);
 
 //deno run --allow-all --unstable index.ts
