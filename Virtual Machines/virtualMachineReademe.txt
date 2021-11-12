@@ -1,0 +1,46 @@
+Watch the video demo here ! : 
+
+Machines Used
+
+Gateway Server
+-IP internal: 10.5.5.1
+-IP external: 10.0.2.6
+User: root
+Pass: cwdnetworkpassword
+User: dev1
+Pass: 123
+
+Webserver 1
+-IP: 10.5.5.11
+User: root
+Pass: cwdebianclipassword
+User: dev1
+Pass: 123
+
+Webserver 2
+-IP: 10.5.5.14
+User: root
+Pass: cwdebianclipassword
+User: dev1
+Pass: 123
+
+Database Server
+-IP: 10.5.5.10
+User: root
+Pass: cwdebianclipassword
+User: dev1
+Pass: 123
+
+File Server
+-IP: 10.5.5.12
+User: root
+Pass: cwdebianclipassword
+User: dev1
+Pass: 123
+
+Development Desktop
+-IP: 10.5.5.13
+User: root
+Pass: 123
+User: RemoteDev
+Pass: 1234
