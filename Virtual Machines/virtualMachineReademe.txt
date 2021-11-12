@@ -1,6 +1,7 @@
-Watch the video demo here ! : 
+Watch the video demo here! : https://youtu.be/r01hjBuiFOc
+Download the virtual machines files : https://drive.google.com/file/d/1IJdpWQQtxZHl68y-3fQ_zTWUN3hqYIwD/view?usp=sharing
 
-Machines Used
+Machines Implemented
 
 Gateway Server
 -IP internal: 10.5.5.1
